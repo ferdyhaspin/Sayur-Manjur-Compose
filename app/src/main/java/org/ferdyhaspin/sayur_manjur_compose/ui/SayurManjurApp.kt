@@ -33,18 +33,48 @@ fun SayurManjurApp(
     val currentRoute = navBackStackEntry?.destination?.route
 
     Scaffold(
+        topBar = {
+            if (currentRoute != Screen.DetailVegetable.route && currentRoute != Screen.Profile.route) {
+                TopBar {
+                    navController.navigate(Screen.Profile.route) {
+                        popUpTo(navController.graph.findStartDestination().id) {
+                            saveState = true
+                        }
+                        restoreState = true
+                        launchSingleTop = true
+                    }
+                }
+            }
+        },
         bottomBar = {
-            if (currentRoute != Screen.DetailVegetable.route) {
+            if (currentRoute != Screen.DetailVegetable.route && currentRoute != Screen.Profile.route) {
                 BottomBar(navController)
             }
         },
         modifier = modifier
     ) { innerPadding ->
-        sayurManjurNavGraph(
+        SayurManjurNavGraph(
             navController = navController,
             modifier = modifier.padding(innerPadding)
         )
     }
+}
+
+@Composable
+fun TopBar(onProfileClick: () -> Unit) {
+    TopAppBar(
+        actions = {
+            IconButton(onClick = onProfileClick) {
+                Icon(
+                    imageVector = Icons.Default.AccountCircle,
+                    contentDescription = stringResource(R.string.menu_profile)
+                )
+            }
+        },
+        title = {
+            Text(stringResource(R.string.app_name))
+        },
+    )
 }
 
 @Composable
@@ -68,12 +98,7 @@ private fun BottomBar(
                 title = stringResource(R.string.menu_favourite),
                 icon = Icons.Default.Favorite,
                 screen = Screen.Favourite
-            ),
-            NavigationItem(
-                title = stringResource(R.string.menu_profile),
-                icon = Icons.Default.AccountCircle,
-                screen = Screen.Profile
-            ),
+            )
         )
         BottomNavigation {
             navigationItems.map { item ->

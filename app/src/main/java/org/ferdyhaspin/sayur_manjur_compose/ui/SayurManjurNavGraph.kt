@@ -20,7 +20,7 @@ import org.ferdyhaspin.sayur_manjur_compose.ui.screen.profile.ProfileScreen
  */
 
 @Composable
-fun sayurManjurNavGraph(
+fun SayurManjurNavGraph(
     modifier: Modifier = Modifier,
     navController: NavHostController = rememberNavController(),
     startDestination: String = Screen.Home.route

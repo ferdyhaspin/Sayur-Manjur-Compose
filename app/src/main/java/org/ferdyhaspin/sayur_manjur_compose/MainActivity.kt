@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.ui.Modifier
-import androidx.core.view.WindowCompat
 import org.ferdyhaspin.sayur_manjur_compose.ui.SayurManjurApp
 import org.ferdyhaspin.sayur_manjur_compose.ui.theme.SayurManjurComposeTheme
 

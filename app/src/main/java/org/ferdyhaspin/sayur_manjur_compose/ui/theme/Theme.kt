@@ -10,17 +10,15 @@ import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 
 private val DarkColorPalette = darkColors(
-    primary = md_theme_light_primary,
-    primaryVariant = md_theme_light_onPrimary,
-    secondary = md_theme_light_secondary,
-    secondaryVariant = md_theme_light_onSecondary
+    primary = Navy200,
+    primaryVariant = Navy700,
+    secondary = Turquoise500
 )
 
 private val LightColorPalette = lightColors(
-    primary = md_theme_dark_primary,
-    primaryVariant = md_theme_dark_onPrimary,
-    secondary = md_theme_dark_secondary,
-    secondaryVariant = md_theme_dark_onSecondary
+    primary = Navy500,
+    primaryVariant = Navy700,
+    secondary = Turquoise500
 )
 
 @Composable
@@ -35,15 +33,9 @@ fun SayurManjurComposeTheme(
     }
 
     val systemUiController = rememberSystemUiController()
-    if(darkTheme){
-        systemUiController.setSystemBarsColor(
-            color = md_theme_dark_onPrimary
-        )
-    }else{
-        systemUiController.setSystemBarsColor(
-            color = md_theme_light_onPrimary
-        )
-    }
+    systemUiController.setSystemBarsColor(
+        color = Color.White
+    )
 
     MaterialTheme(
         colors = colors,
